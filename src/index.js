@@ -47,6 +47,7 @@ function showTemperature(response) {
   let temperatureDiv = document.querySelector("#weather");
   let temperature = Math.round(response.data.main.temp);
   let temperatureDescription = response.data.weather[0].description;
+  let degreesDiv = document.querySelector("#degrees");
 
   let humidityDiv = document.querySelector("#humidity");
   let humidityDescription = response.data.main.humidity;
@@ -57,6 +58,7 @@ function showTemperature(response) {
   temperatureDiv.innerHTML = `It is ${temperature} degrees, ${temperatureDescription}, in ${response.data.name}`;
   humidityDiv.innerHTML = `Humidity: ${humidityDescription}`;
   pressureDiv.innerHTML = `Air pressure: ${pressureDescription}`;
+  degreesDiv.innerHTML = `${temperature}°C`;
 }
 
 function showYourweather(response) {
