@@ -48,17 +48,23 @@ function showTemperature(response) {
   let temperature = Math.round(response.data.main.temp);
   let temperatureDescription = response.data.weather[0].description;
   let degreesDiv = document.querySelector("#degrees");
-
   let humidityDiv = document.querySelector("#humidity");
   let humidityDescription = response.data.main.humidity;
-
   let pressureDiv = document.querySelector("#pressure");
   let pressureDescription = response.data.main.pressure;
+  let iconElement = document.querySelector("#icon");
 
   temperatureDiv.innerHTML = `It is ${temperature} degrees, ${temperatureDescription}, in ${response.data.name}`;
   humidityDiv.innerHTML = `Humidity: ${humidityDescription}`;
   pressureDiv.innerHTML = `Air pressure: ${pressureDescription}`;
   degreesDiv.innerHTML = `${temperature}°C`;
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute("alt", response.data.weather[0].description);
+
+  getForecast(response.data.coord);
 }
 
 function showYourweather(response) {
